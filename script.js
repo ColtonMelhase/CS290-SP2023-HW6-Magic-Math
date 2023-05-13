@@ -101,7 +101,7 @@ function newGame() {
 /*
 generateGoal() must be called after numbers are generated for the number buttons.
 
-Randomly selects two different buttons and an operator to calculate goal.
+Randomly selects three different buttons and two operators to calculate goal.
 
 Returns goal result
 */
@@ -114,25 +114,56 @@ function generateGoal() {
         numbers.push(parseInt(button.textContent))
     }
 
-    //generate two non-equal random indexes 
+    //generate three non-equal random indexes 
     let x = Math.floor(Math.random() * 4);
     let y = Math.floor(Math.random() * 4);
-    while(x == y) {
+    let z = Math.floor(Math.random() * 4);
+    while(x == y || x == z || z == y) {
         x = Math.floor(Math.random() * 4);
         y = Math.floor(Math.random() * 4);
+        z = Math.floor(Math.random() * 4);
     }
-    //generate random number to assign operator
+    console.log(numbers[x] + " " + numbers[y] + " " + numbers[z])
+    //generate random numbers to assign two operators
     let operator = Math.floor(Math.random() * 3);
-    
+    let operator2 = Math.floor(Math.random() * 3);
+
     //compute goal
     if(operator == 0) {
-        goalNum = numbers[x] + numbers[y];
+        if(operator2 == 0)
+        {
+            goalNum = (numbers[x] + numbers[y]) + numbers[z];
+        }
+        else if(operator2 == 1) {
+            goalNum = (numbers[x] + numbers[y]) - numbers[z];
+        }
+        else {
+            goalNum = (numbers[x] + numbers[y]) * numbers[z];
+        }
     }
     else if(operator == 1) {
-        goalNum = numbers[x] - numbers[y];
+        if(operator2 == 0)
+        {
+            goalNum = (numbers[x] - numbers[y]) + numbers[z];
+        }
+        else if(operator2 == 1) {
+            goalNum = (numbers[x] - numbers[y]) - numbers[z];
+        }
+        else {
+            goalNum = (numbers[x] - numbers[y]) * numbers[z];
+        }
     }
     else {
-        goalNum = numbers[x] * numbers[y];
+        if(operator2 == 0)
+        {
+            goalNum = (numbers[x] * numbers[y]) * numbers[z];
+        }
+        else if(operator2 == 1) {
+            goalNum = (numbers[x] * numbers[y]) * numbers[z];
+        }   
+        else {
+            goalNum = (numbers[x] * numbers[y]) * numbers[z];
+        }
     }
     return goalNum;
 }
