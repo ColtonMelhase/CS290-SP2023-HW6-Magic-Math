@@ -12,14 +12,13 @@ header, footer {
     color: white;
     background-color: rgb(209, 90, 20);
     min-width: 640px;
-}
-header {
+    max-width: 640px;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left:20px;
 }
 footer {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    
     margin-top: 10px;
 }
 
@@ -41,6 +40,9 @@ footer {
 }
 #lossesHeader {
     width:120px;
+}
+#goal, #wins, #losses {
+    color:rgb(4, 109, 170);
 }
 
 #gameArea {
